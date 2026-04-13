@@ -12,7 +12,9 @@ import java.util.UUID;
 @Entity
 @Table(name="messages")
 public class MessageDetail {
+    public MessageDetail(){
 
+    }
     public MessageDetail(MessageDTO messageDTO){
         this.messageId = (UUID.randomUUID()).toString();
         this.senderId = messageDTO.getSenderId();
@@ -20,6 +22,7 @@ public class MessageDetail {
         this.message = messageDTO.getMessage();
         this.sentAt = Timestamp.valueOf(LocalDateTime.now());
         this.isDelivered = false;
+        this.deletedFor = null;
     }
     @Id
     private String messageId;
@@ -29,6 +32,7 @@ public class MessageDetail {
     private Timestamp sentAt;
     private Timestamp receivedAt;
     private boolean isDelivered;
+    private String deletedFor;
 
     public String getDeletedFor() {
         return deletedFor;
@@ -37,8 +41,6 @@ public class MessageDetail {
     public void setDeletedFor(String deletedFor) {
         this.deletedFor = deletedFor;
     }
-
-    private String deletedFor;
 
     public String getMessageId() {
         return messageId;

@@ -18,6 +18,7 @@ public class ProjectConfig {
         httpSecurity.oauth2ResourceServer(c -> c.jwt(
                 j -> j.jwkSetUri(keySetURI)
         ));
+        //httpSecurity.authorizeHttpRequests(c -> c.anyRequest().authenticated());
         return httpSecurity.build();
     }
 
