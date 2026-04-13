@@ -10,7 +10,7 @@ import java.util.UUID;
 
 
 @Entity
-@Table(name="")
+@Table(name="messages")
 public class MessageDetail {
 
     public MessageDetail(MessageDTO messageDTO){
@@ -29,7 +29,16 @@ public class MessageDetail {
     private Timestamp sentAt;
     private Timestamp receivedAt;
     private boolean isDelivered;
-    private boolean isDeletedForReceiver;
+
+    public String getDeletedFor() {
+        return deletedFor;
+    }
+
+    public void setDeletedFor(String deletedFor) {
+        this.deletedFor = deletedFor;
+    }
+
+    private String deletedFor;
 
     public String getMessageId() {
         return messageId;
@@ -87,11 +96,5 @@ public class MessageDetail {
         isDelivered = delivered;
     }
 
-    public boolean isDeletedForReceiver() {
-        return isDeletedForReceiver;
-    }
 
-    public void setDeletedForReceiver(boolean deletedForReceiver) {
-        isDeletedForReceiver = deletedForReceiver;
-    }
 }

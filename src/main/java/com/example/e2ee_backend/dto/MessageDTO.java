@@ -12,6 +12,11 @@ public class MessageDTO {
     public MessageDTO(){
 
     }
+    public MessageDTO(String senderId,String receiverId,String message){
+        this.senderId = senderId;
+        this.receiverId = receiverId;
+        this.message = message;
+    }
     public MessageDTO(String messageId,String senderId,String receiverId,String message,Timestamp sentAt,Timestamp receivedAt){
         this.messageId = messageId;
         this.senderId = senderId;

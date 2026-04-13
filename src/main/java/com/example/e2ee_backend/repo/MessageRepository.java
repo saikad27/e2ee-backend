@@ -14,6 +14,7 @@ public interface MessageRepository extends JpaRepository<MessageDetail,String> {
     @Query(value = "UPDATE messages SET received_at = CURRENT_TIMESTAMP ,is_delivered = 1 WHERE user_id = :userId AND is_delivered = 0",nativeQuery = true)
     public void updateUndeliveredMessageStatus(String userId);
 
+    //This method returns all the messages
     @Query(value="SELECT * FROM messages WHERE (sender_id = :userId AND receiver_id = :chatUserId) OR (receiver_id = :userId AND sender_id = :chatUserId) ",nativeQuery=true)
     public List<MessageDetail> getMessages(String userId,String chaUserId,int week);
 }
