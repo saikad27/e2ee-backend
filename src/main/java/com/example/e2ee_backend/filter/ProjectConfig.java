@@ -14,7 +14,7 @@ public class ProjectConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity){
-
+        httpSecurity.csrf( c -> c.disable());
         httpSecurity.oauth2ResourceServer(c -> c.jwt(
                 j -> j.jwkSetUri(keySetURI)
         ));
