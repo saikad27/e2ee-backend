@@ -1,5 +1,6 @@
 package com.example.e2ee_backend.controller;
 
+import com.example.e2ee_backend.dto.DeleteMessagesDTO;
 import com.example.e2ee_backend.dto.MessageDTO;
 import com.example.e2ee_backend.service.MessageService;
 import org.springframework.web.bind.annotation.*;
@@ -25,25 +26,26 @@ public class MessageController {
         return messageService.fetchNewMessages(userId);
     }
 
-    @GetMapping("/fetch/messages/{week}")
-    public List<MessageDTO> fetchMessages(@RequestParam String userId,@RequestParam String chatUserId,@PathVariable("week") int weeks){
-        return messageService.fetchMessages(userId,chatUserId,weeks);
+    @GetMapping("/fetch/messages")
+    public List<MessageDTO> fetchMessages(@RequestParam String userId,@RequestParam String chatUserId){
+        System.out.println("/fetch/messages controller called");
+        return messageService.fetchMessages(userId,chatUserId);
     }
 
-    /*
+
     @DeleteMapping("/delete")
     public void deleteMessage(@RequestParam String messageId){
-
+        messageService.deleteMessage(messageId);
     }
 
     @DeleteMapping("/delete/messages")
-    public void deleteMessages(@RequestBody List<String> messageIdList){
-
+    public void deleteMessages(@RequestBody DeleteMessagesDTO deleteMessagesDTO){
+        messageService.deleteMessages(deleteMessagesDTO.getMessageIdList());
     }
 
     @PatchMapping("/edit")
     public void editMessage(@RequestParam String messageId){
 
     }
-    */
+
 }

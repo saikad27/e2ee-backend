@@ -98,5 +98,17 @@ public class MessageDetail {
         isDelivered = delivered;
     }
 
-
+    @Override
+    public String toString() {
+        return "MessageDetail{" +
+                "messageId='" + messageId + '\'' +
+                ", senderId='" + senderId + '\'' +
+                ", receiverId='" + receiverId + '\'' +
+                ", message='" + message + '\'' +
+                ", sentAt=" + sentAt +
+                ", receivedAt=" + receivedAt +
+                ", isDelivered=" + isDelivered +
+                ", deletedFor='" + deletedFor + '\'' +
+                '}';
+    }
 }
