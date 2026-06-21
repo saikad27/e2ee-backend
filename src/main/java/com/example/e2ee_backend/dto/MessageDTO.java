@@ -72,4 +72,16 @@ public class MessageDTO {
     public void setMessageId(String messageId) {
         this.messageId = messageId;
     }
+
+    @Override
+    public String toString() {
+        return "MessageDTO{" +
+                "senderId='" + senderId + '\'' +
+                ", receiverId='" + receiverId + '\'' +
+                ", messageId='" + messageId + '\'' +
+                ", message='" + message + '\'' +
+                ", sentAt=" + sentAt +
+                ", receivedAt=" + receivedAt +
+                '}';
+    }
 }

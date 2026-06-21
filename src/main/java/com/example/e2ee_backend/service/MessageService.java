@@ -1,6 +1,7 @@
 package com.example.e2ee_backend.service;
 
 import com.example.e2ee_backend.dto.MessageDTO;
+import com.example.e2ee_backend.dto.UserDTO;
 import com.example.e2ee_backend.model.MessageDetail;
 import com.example.e2ee_backend.repo.MessageRepository;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,9 @@ public class MessageService {
     }
     public List<MessageDTO> fetchMessages(String userId,String chatUserId){
         List<MessageDetail> messages = messageRepository.getMessages(userId, chatUserId);
+        for( MessageDetail m :messages ){
+            System.out.println(m);
+        }
         return messages.stream().map(m ->
                 new MessageDTO(m.getMessageId(),m.getSenderId(),m.getReceiverId(),m.getMessage(),m.getSentAt(),m.getReceivedAt())).toList();
     }
@@ -39,4 +43,7 @@ public class MessageService {
     public void deleteMessages(List<String> messageIdList){
         messageRepository.deleteAllById(messageIdList);
     }
+
+
+
 }
