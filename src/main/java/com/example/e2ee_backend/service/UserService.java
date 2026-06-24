@@ -78,6 +78,7 @@ public class UserService {
     //Resolved
     public ConnectionDTO addConnectionRequest(String requestIssuerId,String requestReceiverId){
         ConnectionRequest connectionRequest = new ConnectionRequest(requestIssuerId,requestReceiverId);
+        System.out.println(connectionRequest);
         connectionRequestRepository.save(connectionRequest);
         return new ConnectionDTO(requestReceiverId,userRepository.findById(requestIssuerId).get().getUsername(),"Pending");
     }
@@ -119,7 +120,8 @@ public class UserService {
     }
 
     public List<UserDTO> getAllConnectionRequests(String requestReceiverId){
-        List<UserDTO> allConnectionRequests =  connectionRequestRepository.findByRequestReceiverId(requestReceiverId).get().stream().map(r -> new UserDTO(userRepository.findById(r.getRequestIssuerId()).get())).toList();
+        List<UserDTO> allConnectionRequests =  connectionRequestRepository.findByRequestReceiverId(requestReceiverId).stream().map(r -> new UserDTO(userRepository.findById(r.getRequestIssuerId()).get())).toList();
+        System.out.println(allConnectionRequests);
         connectionRequestRepository.updateDeliveryStatus(requestReceiverId);
         return allConnectionRequests;
     }

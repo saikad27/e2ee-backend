@@ -56,6 +56,7 @@ public class UserController {
     //6
     @PostMapping("/connection/request/send")
     public ConnectionDTO connect(@AuthenticationPrincipal Jwt jwt,@RequestParam String requestReceiverId){
+        System.out.println("Sending connection request ");
         newRequestUserIds.add(requestReceiverId);
         return userService.addConnectionRequest(jwt.getClaimAsString("sub"),requestReceiverId);
     }

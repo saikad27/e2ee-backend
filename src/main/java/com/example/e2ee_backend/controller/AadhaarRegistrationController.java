@@ -51,8 +51,13 @@ public class AadhaarRegistrationController {
 
 
     @PostMapping("/verify/otp")
-    public String verifyOtp(@RequestBody OtpDTO otpDto){
-        return otpService.verify(otpDto.getOtp());
+    public ResponseEntity<String> verifyOtp(@RequestBody OtpDTO otpDto){
+        String result = otpService.verify(otpDto.getOtp());
+        if(result.equals("valid")){
+            return ResponseEntity.ok().body(result);
+        }else{
+            return ResponseEntity.badRequest().body(result);
+        }
     }
 
 }

@@ -22,7 +22,8 @@ public interface ConnectionRequestRepository extends JpaRepository<ConnectionReq
     @Query(value="DELETE FROM connection_request WHERE request_receiver_id=:requestReceiverId AND request_issuer_id=:requestIssuerId",nativeQuery = true)
     public void deleteConnectionRequest(String requestReceiverId,String requestIssuerId);
 
-    public Optional<List<ConnectionRequest>> findByRequestReceiverId(String requestReceiverId);
+    @Query(value="SELECT * FROM connection_request WHERE request_receiver_id=:requestReceiverId",nativeQuery = true)
+    public List<ConnectionRequest> findByRequestReceiverId(String requestReceiverId);
 
     @Query(value="SELECT * FROM connection_request WHERE request_receiver_id=:requestReceiverId AND is_delivered=FALSE",nativeQuery = true)
     public List<ConnectionRequest> findNewConnectionRequests(String requestReceiverId);

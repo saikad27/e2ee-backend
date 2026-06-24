@@ -30,8 +30,6 @@ public class OtpService {
         this.otp = null;
     }
 
-
-
     public String verify(String otp){
         if(this.otp==null || !this.otp.equals(otp)){
             return "invalid";

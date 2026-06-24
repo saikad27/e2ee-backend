@@ -1,6 +1,7 @@
 package com.example.e2ee_backend.model;
 
 import com.example.e2ee_backend.dto.MessageDTO;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -28,6 +29,7 @@ public class MessageDetail {
     private String messageId;
     private String senderId;
     private String receiverId;
+    @Column(columnDefinition="TEXT")
     private String message;
     private Timestamp sentAt;
     private Timestamp receivedAt;
